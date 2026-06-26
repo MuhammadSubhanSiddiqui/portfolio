@@ -19,3 +19,26 @@
     @apply bg-slate-50 text-slate-900;
   }
 }
+
+@layer utilities {
+  .cert-scroll {
+    scrollbar-width: thin;
+    scrollbar-color: rgba(148, 163, 184, 0.4) transparent;
+  }
+
+  .cert-scroll::-webkit-scrollbar {
+    height: 4px;
+  }
+
+  .cert-scroll::-webkit-scrollbar-thumb {
+    @apply rounded-full bg-slate-300/60;
+  }
+
+  .dark .cert-scroll {
+    scrollbar-color: rgba(255, 255, 255, 0.15) transparent;
+  }
+
+  .dark .cert-scroll::-webkit-scrollbar-thumb {
+    @apply bg-white/15;
+  }
+}
