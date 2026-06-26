@@ -181,9 +181,12 @@ export function ProjectImage({ project, isDark }) {
     return (
       <img
         src={project.image}
-        alt={`${project.title} screenshot`}
+        alt={`Screenshot of ${project.title} — ${project.categoryLabel} project by Muhammad Subhan Siddiqui`}
+        width={640}
+        height={400}
         className="h-full w-full object-cover"
         loading="lazy"
+        decoding="async"
       />
     )
   }

@@ -17,9 +17,12 @@ function CertificationImage({ cert, isDark }) {
     return (
       <img
         src={cert.image}
-        alt={`${cert.name} certification badge`}
+        alt={`${cert.name} certification badge from ${cert.provider} — Muhammad Subhan Siddiqui`}
+        width={280}
+        height={175}
         className="h-full w-full object-cover"
         loading="lazy"
+        decoding="async"
       />
     )
   }

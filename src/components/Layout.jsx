@@ -1,12 +1,18 @@
+import { Suspense, lazy } from 'react'
 import Navbar from './Navbar'
 import Footer from './Footer'
 import Home from '../sections/Home'
-import About from '../sections/About'
-import Skills from '../sections/Skills'
-import Projects from '../sections/Projects'
-import Experience from '../sections/Experience'
-import Education from '../sections/Education'
-import Contact from '../sections/Contact'
+
+const About = lazy(() => import('../sections/About'))
+const Skills = lazy(() => import('../sections/Skills'))
+const Projects = lazy(() => import('../sections/Projects'))
+const Experience = lazy(() => import('../sections/Experience'))
+const Education = lazy(() => import('../sections/Education'))
+const Contact = lazy(() => import('../sections/Contact'))
+
+function SectionFallback() {
+  return <div className="min-h-[40vh]" aria-hidden="true" />
+}
 
 export default function Layout() {
   return (
@@ -14,12 +20,14 @@ export default function Layout() {
       <Navbar />
       <main className="flex-1">
         <Home />
-        <About />
-        <Experience />
-        <Projects />
-        <Skills />
-        <Education />
-        <Contact />
+        <Suspense fallback={<SectionFallback />}>
+          <About />
+          <Experience />
+          <Projects />
+          <Skills />
+          <Education />
+          <Contact />
+        </Suspense>
       </main>
       <Footer />
     </div>

@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630" fill="none">
+  <rect width="1200" height="630" fill="#0A0E17"/>
+  <rect x="80" y="80" width="1040" height="470" rx="24" stroke="url(#border)" stroke-width="1" fill="#101A2E" fill-opacity="0.5"/>
+  <text x="120" y="280" font-family="system-ui, sans-serif" font-size="56" font-weight="700" fill="#F8FAFC">Muhammad Subhan Siddiqui</text>
+  <text x="120" y="350" font-family="system-ui, sans-serif" font-size="32" fill="#94A3B8">AI Engineer &amp; Full-Stack Developer</text>
+  <text x="120" y="420" font-family="system-ui, sans-serif" font-size="22" fill="#6366F1">LLM Applications · Agentic Systems · MERN Stack</text>
+  <defs>
+    <linearGradient id="border" x1="80" y1="80" x2="1120" y2="550" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#6366F1"/>
+      <stop offset="1" stop-color="#8B5CF6"/>
+    </linearGradient>
+  </defs>
+</svg>
