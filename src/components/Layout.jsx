@@ -15,9 +15,9 @@ export default function Layout() {
       <main className="flex-1">
         <Home />
         <About />
-        <Skills />
-        <Projects />
         <Experience />
+        <Projects />
+        <Skills />
         <Education />
         <Contact />
       </main>
