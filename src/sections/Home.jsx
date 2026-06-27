@@ -1,6 +1,6 @@
 import { motion } from 'framer-motion'
 import { FaGithub, FaLinkedin } from 'react-icons/fa'
-import { SiKaggle } from 'react-icons/si'
+import { SiKaggle, SiLeetcode } from 'react-icons/si'
 import { Mail } from 'lucide-react'
 import { useTheme } from '../lib/ThemeContext'
 import HeroBackground from '../components/hero/HeroBackground'
@@ -17,6 +17,7 @@ const SOCIAL_LINKS = [
     icon: FaLinkedin,
   },
   { href: 'https://www.kaggle.com/msubhansiddiqui', label: 'Kaggle', icon: SiKaggle },
+  { href: 'https://leetcode.com/u/msubhansiddiqui/', label: 'LeetCode', icon: SiLeetcode },
   { href: 'mailto:subhansiddiquiau@gmail.com', label: 'Email', icon: Mail },
 ]
 
@@ -90,8 +91,8 @@ export default function Home() {
               isDark ? 'text-text-secondary' : 'text-slate-600'
             }`}
           >
-            I build end-to-end AI systems — from fine-tuned NLP models to production-deployed
-            full-stack apps.
+            I build end-to-end AI systems — fine-tuned transformers, computer vision pipelines,
+            and Gemini-powered LLM apps — and ship them as production-ready full-stack products.
           </motion.p>
 
           <motion.div

@@ -1,4 +1,4 @@
-import { Brain, Code2, Database, Layers, Wrench } from 'lucide-react'
+import { Brain, Code2, Database, Layers, Wrench, Shield } from 'lucide-react'
 
 export const SKILL_FILTERS = [
   { id: 'all', label: 'All' },
@@ -10,6 +10,11 @@ export const SKILL_FILTERS = [
 /**
  * Skill categories — add items to `skills` or duplicate a block to extend.
  * `filters`: which filter tabs show this card ('all' is implicit via the All tab).
+ *
+ * Built from a full scan of all public GitHub repos:
+ * ai_financial_scam-detection, PromptIR, ai-ebook-generator, task-manager, CRUD,
+ * study-tracker, trippy, NovaMart, reporoast, hospital-management-system,
+ * DNS_cachemonitoring, gloria-beans-coffee-store, tic-tac-toe.
  */
 export const skillCategories = [
   {
@@ -17,7 +22,7 @@ export const skillCategories = [
     title: 'Languages',
     icon: Code2,
     filters: ['all'],
-    skills: ['Python', 'C/C++', 'JavaScript', 'SQL'],
+    skills: ['Python', 'JavaScript', 'TypeScript', 'C/C++', 'C#', 'SQL'],
   },
   {
     id: 'ai-ml-data',
@@ -36,8 +41,10 @@ export const skillCategories = [
       'Fine-tuning',
       'Transformers',
       'DistilBERT',
+      'spaCy',
       'NLP',
       'Computer Vision',
+      'Transfer Learning',
     ],
   },
   {
@@ -47,8 +54,11 @@ export const skillCategories = [
     filters: ['all', 'full-stack'],
     skills: [
       'ReactJS',
+      'Next.js',
+      'Vite',
       'Node.js',
       'Express.js',
+      'ASP.NET',
       'Tailwind CSS',
       'RESTful APIs',
       'JWT Authentication',
@@ -59,14 +69,37 @@ export const skillCategories = [
     title: 'Databases',
     icon: Database,
     filters: ['all', 'full-stack'],
-    skills: ['MongoDB', 'PostgreSQL'],
+    skills: ['MongoDB', 'PostgreSQL', 'SQL Server (T-SQL)', 'PL/pgSQL'],
+  },
+  {
+    id: 'networking-security',
+    title: 'Networking & Security',
+    icon: Shield,
+    filters: ['all', 'tools'],
+    skills: [
+      'Cisco Networking',
+      'Network Troubleshooting',
+      'DNS/Network Monitoring',
+      'VirusTotal API',
+      'Tkinter (GUI Tooling)',
+    ],
   },
   {
     id: 'tools-devops',
     title: 'Tools & DevOps',
     icon: Wrench,
     filters: ['all', 'tools'],
-    skills: ['Git', 'GitHub', 'Docker', 'VS Code', 'Google Colab', 'Hugging Face Spaces'],
+    skills: [
+      'Git',
+      'GitHub',
+      'GitHub REST API',
+      'Docker',
+      'VS Code',
+      'Google Colab',
+      'Hugging Face Spaces',
+      'Streamlit',
+      'ESLint',
+    ],
   },
 ]
 

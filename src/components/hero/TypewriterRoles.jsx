@@ -2,10 +2,10 @@ import { useEffect, useState } from 'react'
 import { useTheme } from '../../lib/ThemeContext'
 
 const ROLES = [
-  'AI Engineer',
-  'Full-Stack Developer',
+  'AI/Full-Stack Engineer',
   'LLM Application Developer',
   'Agentic Systems Builder',
+  'Computer Vision & NLP',
 ]
 
 export default function TypewriterRoles() {

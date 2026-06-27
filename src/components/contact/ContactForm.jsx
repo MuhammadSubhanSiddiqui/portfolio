@@ -1,10 +1,10 @@
-import { useState } from 'react'
-import emailjs from '@emailjs/browser'
+import { useRef, useState } from 'react'
 import { Loader2, Send } from 'lucide-react'
 import { useTheme } from '../../lib/ThemeContext'
-import { EMAILJS_CONFIG, isEmailJsConfigured } from '../../lib/contact'
+import { isEmailJsConfigured } from '../../lib/contact'
+import { sendContactEmail } from '../../lib/emailjs'
 
-const INITIAL_FORM = { name: '', email: '', message: '', website: '' }
+const INITIAL_FORM = { name: '', email: '', message: '' }
 
 function validateForm({ name, email, message }) {
   const errors = {}
@@ -33,6 +33,15 @@ function validateForm({ name, email, message }) {
   return errors
 }
 
+function getEmailJsErrorMessage(err) {
+  if (err?.status === 403) {
+    return 'EmailJS blocked the request. In your EmailJS dashboard → Account → Security, allow requests from this domain (e.g. localhost).'
+  }
+  if (err?.text) return err.text
+  if (err?.message) return err.message
+  return 'Something went wrong. Please try again or email me directly.'
+}
+
 export default function ContactForm({ onSuccess, onError }) {
   const { theme } = useTheme()
   const isDark = theme === 'dark'
@@ -40,6 +49,7 @@ export default function ContactForm({ onSuccess, onError }) {
   const [errors, setErrors] = useState({})
   const [submitting, setSubmitting] = useState(false)
   const [inlineError, setInlineError] = useState('')
+  const botCheckRef = useRef(null)
 
   const handleChange = (e) => {
     const { name, value } = e.target
@@ -52,7 +62,7 @@ export default function ContactForm({ onSuccess, onError }) {
     e.preventDefault()
     setInlineError('')
 
-    if (form.website) return
+    if (botCheckRef.current?.checked) return
 
     const validationErrors = validateForm(form)
     if (Object.keys(validationErrors).length > 0) {
@@ -62,7 +72,7 @@ export default function ContactForm({ onSuccess, onError }) {
 
     if (!isEmailJsConfigured()) {
       setInlineError(
-        'Email service is not configured. Add your EmailJS keys to the .env file.',
+        'Email service is not configured. Add your EmailJS keys to .env and restart the dev server.',
       )
       return
     }
@@ -70,22 +80,18 @@ export default function ContactForm({ onSuccess, onError }) {
     setSubmitting(true)
 
     try {
-      await emailjs.send(
-        EMAILJS_CONFIG.serviceId,
-        EMAILJS_CONFIG.templateId,
-        {
-          from_name: form.name.trim(),
-          from_email: form.email.trim(),
-          message: form.message.trim(),
-        },
-        { publicKey: EMAILJS_CONFIG.publicKey },
-      )
+      await sendContactEmail({
+        name: form.name,
+        email: form.email,
+        message: form.message,
+      })
 
       setForm(INITIAL_FORM)
       setErrors({})
-      onSuccess?.('Message sent — I\'ll get back to you soon.')
-    } catch {
-      const message = 'Something went wrong. Please try again or email me directly.'
+      if (botCheckRef.current) botCheckRef.current.checked = false
+      onSuccess?.("Message sent — I'll get back to you soon.")
+    } catch (err) {
+      const message = getEmailJsErrorMessage(err)
       setInlineError(message)
       onError?.(message)
     } finally {
@@ -105,16 +111,15 @@ export default function ContactForm({ onSuccess, onError }) {
     }`
 
   return (
-    <form onSubmit={handleSubmit} noValidate className="space-y-4">
-      {/* Honeypot — hidden from users; bots that fill it are silently rejected */}
-      <div className="absolute -left-[9999px] h-0 w-0 overflow-hidden" aria-hidden="true">
-        <label htmlFor="website">Website</label>
+    <form onSubmit={handleSubmit} noValidate className="relative space-y-4">
+      {/* Checkbox honeypot — avoids browser autofill that breaks text-based traps */}
+      <div className="absolute -left-[9999px] h-px w-px overflow-hidden" aria-hidden="true">
+        <label htmlFor="contact_bot_check">Subscribe to newsletter</label>
         <input
-          type="text"
-          id="website"
-          name="website"
-          value={form.website}
-          onChange={handleChange}
+          ref={botCheckRef}
+          type="checkbox"
+          id="contact_bot_check"
+          name="contact_bot_check"
           tabIndex={-1}
           autoComplete="off"
         />

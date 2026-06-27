@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion'
-import { Brain, Code2, Layers, Server } from 'lucide-react'
+import { Brain, Code2, Layers, Server, Network } from 'lucide-react'
 import { useTheme } from '../lib/ThemeContext'
 import AboutPhoto from '../components/about/AboutPhoto'
 import AboutStat from '../components/about/AboutStat'
@@ -7,25 +7,30 @@ import FocusCard from '../components/about/FocusCard'
 
 const STATS = [
   { value: 70, suffix: '+', label: 'LeetCode Problems' },
-  { value: 4, suffix: '+', label: 'MERN Projects Shipped' },
   { value: 98.5, decimals: 1, suffix: '%', label: 'Model Accuracy Achieved' },
+  { value: 13, suffix: '+', label: 'Projects Shipped' },
 ]
 
 const FOCUS_AREAS = [
   {
     title: 'Frontend',
-    description: 'React-driven interfaces with attention to performance, accessibility, and polish.',
+    description: 'React, Next.js, and Vite interfaces with attention to performance, accessibility, and polish.',
     icon: Layers,
   },
   {
     title: 'Backend',
-    description: 'Node.js APIs, data modeling, and services built to scale beyond prototypes.',
+    description: 'Node.js/Express APIs, MongoDB & PostgreSQL data modeling, and services built to scale beyond prototypes.',
     icon: Server,
   },
   {
     title: 'Applied AI',
-    description: 'Fine-tuned transformers, NLP pipelines, and Gemini API integrations in production.',
+    description: 'Fine-tuned transformers (DistilBERT, PromptIR), NLP pipelines, and Gemini API integrations in production.',
     icon: Brain,
+  },
+  {
+    title: 'Networking (Basics)',
+    description: 'Foundational Cisco/TCP-IP & DNS knowledge from coursework, applied in a small personal scripting project.',
+    icon: Network,
   },
   {
     title: 'Core CS Fundamentals',
@@ -89,21 +94,26 @@ export default function About() {
             >
               <p>
                 I&apos;m pursuing my BSCS at Air University Islamabad (Class of 2027), working at
-                the intersection of full-stack engineering and intelligent software agents.
-                I&apos;ve built production AI systems — fine-tuned DistilBERT transformers, NLP
-                pipelines, and LLM-integrated applications using the Gemini API — and I ship
-                end-to-end products on the MERN stack.
+                the intersection of full-stack engineering and applied AI. I&apos;ve built
+                production-style AI systems — a fine-tuned DistilBERT scam-detection engine at
+                98.5% accuracy, a transfer-learning pipeline on the PromptIR transformer
+                architecture (+4.02 dB PSNR), and Gemini API–integrated LLM applications — and I
+                ship full-stack products across React/Next.js, Node.js/Express, and MongoDB/
+                PostgreSQL.
               </p>
               <p>
-                During a 6-month Software Engineer Fellowship at Dev Weekends (June–November 2025),
-                I solved 70+ LeetCode problems and delivered 4+ collaborative MERN projects under
-                real team deadlines. I&apos;m active in the Microsoft Learn Student Ambassadors
-                Think Tank and the Google Developer Groups on Campus Technical Team.
+                During a 6-month Software Engineer Fellowship at Dev Weekends (June–November
+                2025), I solved 70+ LeetCode problems and delivered collaborative MERN projects
+                under real team deadlines. I&apos;m active in the MLSA Think Tank and the Google
+                Developer Groups on Campus Technical Team, and I&apos;m currently working through
+                the IBM AI Engineering Professional Certificate and the Deep Learning
+                Specialization.
               </p>
               <p>
-                I also bring hands-on Cisco networking and infrastructure experience — TCP/IP,
-                routing, DNS, and network security — which informs how I design systems that hold up
-                under load, not just in a sandbox.
+                On the side, I have basic hands-on exposure to Cisco networking fundamentals —
+                IP addressing, routing, and DNS — picked up through coursework and a small
+                personal Python scripting project, but my focus stays squarely on AI and
+                full-stack engineering.
               </p>
             </div>
 
@@ -119,7 +129,7 @@ export default function About() {
           </motion.div>
         </div>
 
-        <div className="mt-16 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">
+        <div className="mt-16 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-5">
           {FOCUS_AREAS.map((area, i) => (
             <FocusCard key={area.title} {...area} index={i} />
           ))}
