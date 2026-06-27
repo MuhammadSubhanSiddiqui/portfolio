@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion'
-import { ExternalLink, Github } from 'lucide-react'
+import { ExternalLink, Github, Database } from 'lucide-react' // Database icon imported for Kaggle datasets
 import { useTheme } from '../../lib/ThemeContext'
 import { ProjectImage } from './ProjectModal'
 
@@ -21,6 +21,9 @@ export default function ProjectCard({ project, index, onOpen }) {
       onOpen(project)
     }
   }
+
+  // Helper function to check if a valid link exists (is not undefined, null, or '#')
+  const isValidLink = (url) => url && url !== '#'
 
   return (
     <motion.article
@@ -44,7 +47,7 @@ export default function ProjectCard({ project, index, onOpen }) {
         }`}
       >
         <div
-          className={`relative overflow-hidden ${imageRight ? 'md:order-2' : 'md:order-1'}`}
+          className={`relative ${imageRight ? 'md:order-2' : 'md:order-1'}`}
         >
           <ProjectImage project={project} isDark={isDark} />
           {project.metric && (
@@ -119,7 +122,8 @@ export default function ProjectCard({ project, index, onOpen }) {
           </div>
 
           <div className="mt-6 flex flex-wrap gap-3">
-            {links.github && (
+            {/* GitHub Link Validation */}
+            {isValidLink(links.github) && (
               <a
                 href={links.github}
                 target="_blank"
@@ -136,7 +140,28 @@ export default function ProjectCard({ project, index, onOpen }) {
                 GitHub
               </a>
             )}
-            {links.demo && (
+
+            {/* Kaggle Dataset Link Validation */}
+            {isValidLink(links.dataset) && (
+              <a
+                href={links.dataset}
+                target="_blank"
+                rel="noopener noreferrer"
+                onClick={(e) => e.stopPropagation()}
+                className={`inline-flex items-center gap-2 rounded-full px-4 py-2 text-sm font-medium transition-colors ${
+                  isDark
+                    ? 'border border-white/10 text-text-primary hover:bg-white/10'
+                    : 'border border-slate-200 text-slate-700 hover:bg-slate-50'
+                }`}
+                aria-label={`View ${project.title} dataset on Kaggle`}
+              >
+                <Database size={16} />
+                Dataset
+              </a>
+            )}
+
+            {/* Live Demo Link Validation */}
+            {isValidLink(links.demo) && (
               <a
                 href={links.demo}
                 target="_blank"

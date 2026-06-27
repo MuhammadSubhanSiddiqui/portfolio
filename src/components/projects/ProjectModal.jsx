@@ -1,6 +1,6 @@
 import { useEffect, useRef } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
-import { ExternalLink, Github, ImageIcon, X } from 'lucide-react'
+import { ExternalLink, Github, Database, ImageIcon, X } from 'lucide-react' // Database icon imported for Kaggle datasets
 import { useTheme } from '../../lib/ThemeContext'
 
 const CASE_STUDY_FIELDS = [
@@ -31,6 +31,9 @@ export default function ProjectModal({ project, onClose }) {
   if (!project) return null
 
   const { links } = project
+
+  // Helper function to check if a valid link exists (is not undefined, null, or '#')
+  const isValidLink = (url) => url && url !== '#'
 
   return (
     <AnimatePresence>
@@ -141,7 +144,8 @@ export default function ProjectModal({ project, onClose }) {
           </div>
 
           <div className="mt-6 flex flex-wrap gap-3">
-            {links.github && (
+            {/* GitHub Validation inside Modal */}
+            {isValidLink(links.github) && (
               <a
                 href={links.github}
                 target="_blank"
@@ -157,7 +161,27 @@ export default function ProjectModal({ project, onClose }) {
                 GitHub
               </a>
             )}
-            {links.demo && (
+
+            {/* Kaggle Dataset Validation inside Modal */}
+            {isValidLink(links.dataset) && (
+              <a
+                href={links.dataset}
+                target="_blank"
+                rel="noopener noreferrer"
+                className={`inline-flex items-center gap-2 rounded-full px-4 py-2 text-sm font-medium transition-colors ${
+                  isDark
+                    ? 'border border-white/10 text-text-primary hover:bg-white/10'
+                    : 'border border-slate-200 text-slate-700 hover:bg-slate-50'
+                }`}
+                aria-label={`View ${project.title} dataset on Kaggle`}
+              >
+                <Database size={16} />
+                Dataset
+              </a>
+            )}
+
+            {/* Live Demo Validation inside Modal */}
+            {isValidLink(links.demo) && (
               <a
                 href={links.demo}
                 target="_blank"
@@ -182,9 +206,7 @@ export function ProjectImage({ project, isDark }) {
       <img
         src={project.image}
         alt={`Screenshot of ${project.title} — ${project.categoryLabel} project by Muhammad Subhan Siddiqui`}
-        width={640}
-        height={400}
-        className="h-full w-full object-cover"
+        className="block h-auto w-full"
         loading="lazy"
         decoding="async"
       />

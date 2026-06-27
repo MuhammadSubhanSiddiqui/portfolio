@@ -1,3 +1,17 @@
+import aiScamDetectionImg from '../images/projects/ai-scam-detection.jpg'
+import promptIrImg from '../images/projects/prompt-ir.JPG'
+import eBookImg from '../images/projects/eBook.png'
+import taskManagerImg from '../images/projects/task_manager.JPG'
+import crudAppImg from '../images/projects/crud-app.JPG'
+import studyTrackerImg from '../images/projects/study-tracker.JPG'
+import novamartImg from '../images/projects/novamart.JPG'
+import repoRoastImg from '../images/projects/repo-roast.jpg'
+import hospitalManagementImg from '../images/projects/hospital-management.JPG'
+import dnsCacheImg from '../images/projects/dns-cache.jpg'
+import gloriaBeansImg from '../images/projects/gloria-beans.JPG'
+import ticTacToeImg from '../images/projects/tic-tac-toe.JPG'
+import trippyImg from '../images/projects/trippy-toe.JPG'
+
 /**
  * Project categories — used by the filter bar.
  * Add new categories here and they appear automatically in the UI.
@@ -13,7 +27,7 @@ export const PROJECT_CATEGORIES = [
  * Portfolio projects data source.
  *
  * To add a project: copy an object below, set a unique `id`, fill in the fields,
- * and drop a screenshot at `image` (e.g. "/images/projects/my-project.png").
+ * and drop a screenshot in `src/images/projects/`, then import it above and set `image`.
  *
  * Fields:
  * - category: "ai-ml" | "full-stack" | "other"
@@ -29,31 +43,33 @@ export const projects = [
     date: 'April 2026 – May 2026',
     category: 'ai-ml',
     categoryLabel: 'AI/ML',
-    image: null,
+    image: aiScamDetectionImg,
     metric: {
-      chip: '98.5% Accuracy',
+      chip: '98.5% Accuracy & Custom Dataset',
       detail:
-        'Fine-tuned DistilBERT with adversarial data augmentation — 98.5% detection accuracy, zero false positives on legitimate corporate finance news.',
+        'Published a specialized financial scam meta-dataset on Kaggle. Fine-tuned DistilBERT with adversarial data augmentation, achieving zero false positives on corporate finance news.',
     },
     highlights: [
-      '3-layer architecture: DistilBERT intent detection, spaCy/Regex NLP extraction, Gemini 2.5 Flash verification',
-      'Deployed as a containerized Streamlit app on Hugging Face Spaces',
-      'Fine-tuned DistilBERT in PyTorch with adversarial data augmentation — 98.5% detection accuracy, zero false positives on legitimate corporate finance news',
+      'Curated and published the "Financial Scam and Deceptive Text Meta-Dataset" on Kaggle for benchmark training',
+      'Engineered a 3-layer architecture: DistilBERT intent detection, spaCy/Regex NLP extraction, and Gemini 2.5 Flash verification',
+      'Fine-tuned DistilBERT in PyTorch with custom augmented data to eliminate false alarms on legitimate financial news',
+      'Deployed the production-ready pipeline as a containerized Streamlit application on Hugging Face Spaces',
     ],
-    tags: ['PyTorch', 'DistilBERT', 'NLP', 'Gemini API', 'Docker', 'Streamlit'],
+    tags: ['PyTorch', 'DistilBERT', 'NLP', 'Gemini API', 'Kaggle Datasets', 'Docker', 'Streamlit'],
     links: {
       github: 'https://github.com/MuhammadSubhanSiddiqui/ai_financial_scam-detection',
-      demo: '#',
+      dataset: 'https://www.kaggle.com/datasets/msubhansiddiqui/financial-scam-and-deceptive-text-meta-dataset', 
+      demo: 'https://huggingface.co/spaces/msubhansiddiqui/financial-scam-detection',
     },
     caseStudy: {
       problem:
-        'Financial scam narratives spread quickly through news channels. The system needed to catch fraudulent intent without generating false alarms on legitimate corporate finance reporting.',
+        'Financial scam narratives spread quickly through news channels. The system needed a robust, non-generic dataset to catch fraudulent intent without generating false alarms on legitimate corporate finance reporting.',
       approach:
-        'Built a three-stage verification pipeline: transformer-based intent classification, rule-assisted entity extraction, and LLM-backed final verification before surfacing a verdict.',
+        'Curated and open-sourced a custom meta-dataset on Kaggle. Built a three-stage verification pipeline: transformer-based intent classification trained on the dataset, rule-assisted entity extraction, and LLM-backed final verification before surfacing a verdict.',
       architecture:
-        'DistilBERT intent detection → spaCy/Regex NLP extraction → Gemini 2.5 Flash verification → containerized Streamlit frontend deployed on Hugging Face Spaces.',
+        'Kaggle Meta-Dataset → DistilBERT fine-tuning → spaCy/Regex NLP extraction → Gemini 2.5 Flash verification → containerized Streamlit frontend.',
       result:
-        'Achieved 98.5% detection accuracy with zero false positives on legitimate corporate finance news, packaged as a production-ready containerized demo.',
+        'Achieved 98.5% detection accuracy with zero false positives on legitimate corporate finance news, open-sourcing both the training dataset and a production-ready containerized demo.',
     },
   },
   {
@@ -62,7 +78,7 @@ export const projects = [
     date: 'May 2026',
     category: 'ai-ml',
     categoryLabel: 'AI/ML',
-    image: null,
+    image: promptIrImg,
     metric: {
       chip: '+4.02 dB PSNR',
       detail:
@@ -96,7 +112,7 @@ export const projects = [
     date: 'Nov 2025 – Dec 2025',
     category: 'full-stack',
     categoryLabel: 'Full-Stack',
-    image: null,
+    image: eBookImg,
     metric: null,
     highlights: [
       'Full-stack AI-powered eBook platform (React/Vite + Node.js/Express/MongoDB) using the Gemini API',
@@ -124,7 +140,7 @@ export const projects = [
     date: '2026',
     category: 'full-stack',
     categoryLabel: 'Full-Stack',
-    image: null,
+    image: taskManagerImg,
     metric: null,
     highlights: [
       'Full-stack task management app built with Next.js 15 (App Router) and TypeScript',
@@ -152,7 +168,7 @@ export const projects = [
     date: '2026',
     category: 'full-stack',
     categoryLabel: 'Full-Stack',
-    image: null,
+    image: crudAppImg,
     metric: null,
     highlights: [
       'JavaScript CRUD application with a separate client app and Node.js server',
@@ -175,7 +191,7 @@ export const projects = [
     date: '2025',
     category: 'full-stack',
     categoryLabel: 'Full-Stack',
-    image: null,
+    image: studyTrackerImg,
     metric: null,
     highlights: [
       'Study tracking application built with C# and ASP.NET-style HTML views',
@@ -198,7 +214,7 @@ export const projects = [
     date: '2025',
     category: 'full-stack',
     categoryLabel: 'Full-Stack',
-    image: null,
+    image: trippyImg,
     metric: null,
     highlights: [
       'React + Vite single-page application scaffold for a travel/trip-planning concept',
@@ -207,6 +223,7 @@ export const projects = [
     tags: ['React', 'Vite', 'JavaScript'],
     links: {
       github: 'https://github.com/MuhammadSubhanSiddiqui/trippy',
+      demo: 'https://trippy-tou.netlify.app/',
     },
     caseStudy: {
       problem: 'Early-stage React app exploring a trip-planning / travel use case.',
@@ -223,7 +240,7 @@ export const projects = [
     date: 'Spring 2026',
     category: 'other',
     categoryLabel: 'Database / ADBMS',
-    image: null,
+    image: novamartImg,
     metric: null,
     highlights: [
       'Advanced Database Management Systems (ADBMS) lab project',
@@ -247,7 +264,7 @@ export const projects = [
     date: '2026',
     category: 'other',
     categoryLabel: 'Dev Tooling',
-    image: null,
+    image: repoRoastImg,
     metric: null,
     highlights: [
       'Node.js CLI tool that grades a GitHub repository\'s maintainer responsiveness',
@@ -270,7 +287,7 @@ export const projects = [
     date: '2025',
     category: 'other',
     categoryLabel: 'C++ Console App',
-    image: null,
+    image: hospitalManagementImg,
     metric: null,
     highlights: [
       'C++/C console-based hospital management system',
@@ -293,7 +310,7 @@ export const projects = [
     date: '2025',
     category: 'other',
     categoryLabel: 'Networking / Security',
-    image: null,
+    image: dnsCacheImg,
     metric: null,
     highlights: [
       'Python GUI tool (Tkinter) that scans the network for connected devices and DNS cache entries',
@@ -317,7 +334,7 @@ export const projects = [
     date: '2025',
     category: 'full-stack',
     categoryLabel: 'Static Website',
-    image: null,
+    image: gloriaBeansImg,
     metric: null,
     highlights: [
       'Multi-page static coffee shop website (Home, Store, About, Franchises, Contact, Login)',
@@ -326,6 +343,7 @@ export const projects = [
     tags: ['HTML', 'CSS'],
     links: {
       github: 'https://github.com/MuhammadSubhanSiddiqui/gloria-beans-coffee-store',
+      demo: 'https://muhammadsubhansiddiqui.github.io/gloria-beans-coffee-store/'
     },
     caseStudy: {
       problem: 'Early front-end practice project: build a complete multi-page business website from scratch.',
@@ -338,9 +356,9 @@ export const projects = [
     id: 'tic-tac-toe',
     title: 'Tic Tac Toe',
     date: '2024',
-    category: 'other',
+    category: 'full-stack',
     categoryLabel: 'Mini Project',
-    image: null,
+    image: ticTacToeImg,
     metric: null,
     highlights: [
       'Classic Tic Tac Toe game built with vanilla HTML, CSS, and JavaScript',
@@ -348,6 +366,7 @@ export const projects = [
     tags: ['JavaScript', 'HTML', 'CSS'],
     links: {
       github: 'https://github.com/MuhammadSubhanSiddiqui/tic-tac-toe',
+      demo: 'https://muhammadsubhansiddiqui.github.io/tic-tac-toe/',
     },
     caseStudy: {
       problem: 'Foundational JavaScript practice project.',
