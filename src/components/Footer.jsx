@@ -66,7 +66,7 @@ export default function Footer() {
               aria-label={label}
               className={`rounded-lg p-2.5 transition-colors ${
                 isDark
-                  ? 'text-text-secondary/60 hover:bg-white/5 hover:text-text-secondary'
+                  ? 'text-text-secondary hover:bg-white/5 hover:text-text-primary'
                   : 'text-slate-400 hover:bg-slate-100 hover:text-slate-600'
               }`}
             >
@@ -77,7 +77,7 @@ export default function Footer() {
 
         <p
           className={`mx-auto mt-8 max-w-2xl text-center text-xs leading-relaxed ${
-            isDark ? 'text-text-secondary/70' : 'text-slate-400'
+            isDark ? 'text-text-secondary' : 'text-slate-400'
           }`}
         >
           {SEO_SUMMARY}

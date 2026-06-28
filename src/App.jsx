@@ -1,9 +1,19 @@
+import { useEffect, useState } from 'react'
 import { Helmet } from 'react-helmet-async'
+import { Navigate, Route, Routes } from 'react-router-dom'
 import Layout from './components/Layout'
+import PageLoader from './components/PageLoader'
+import NotFound from './sections/NotFound'
 import { SEO, SITE_URL } from './lib/seo'
 
 export default function App() {
+  const [loading, setLoading] = useState(true)
   const ogImageUrl = `${SITE_URL}${SEO.ogImage}`
+
+  useEffect(() => {
+    const timer = window.setTimeout(() => setLoading(false), 850)
+    return () => window.clearTimeout(timer)
+  }, [])
 
   return (
     <>
@@ -24,7 +34,12 @@ export default function App() {
         <meta name="twitter:description" content={SEO.description} />
         <meta name="twitter:image" content={ogImageUrl} />
       </Helmet>
-      <Layout />
+      <PageLoader visible={loading} />
+      <Routes>
+        <Route path="/" element={<Layout />} />
+        <Route path="/404" element={<NotFound />} />
+        <Route path="*" element={<Navigate to="/404" replace />} />
+      </Routes>
     </>
   )
 }

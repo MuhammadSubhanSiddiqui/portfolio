@@ -4,6 +4,7 @@ import { experienceItems, communityRoles } from '../lib/experience'
 import TimelineTrack from '../components/experience/TimelineTrack'
 import TimelineNode from '../components/experience/TimelineNode'
 import CommunityTimelineNode from '../components/experience/CommunityTimelineNode'
+import { SECTION_REVEAL } from '../lib/motion'
 
 export default function Experience() {
   const { theme } = useTheme()
@@ -16,10 +17,10 @@ export default function Experience() {
     >
       <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
+          variants={SECTION_REVEAL}
+          initial="hidden"
+          whileInView="visible"
           viewport={{ once: true, margin: '-60px' }}
-          transition={{ duration: 0.55, ease: [0.22, 1, 0.36, 1] }}
         >
           <p
             className={`mb-2 text-sm font-medium uppercase tracking-[0.2em] ${

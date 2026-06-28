@@ -61,7 +61,7 @@ export default function EducationCard({ education }) {
       <div className="mt-6">
         <p
           className={`mb-3 text-xs font-medium uppercase tracking-wider ${
-            isDark ? 'text-text-secondary/70' : 'text-slate-400'
+            isDark ? 'text-text-secondary' : 'text-slate-400'
           }`}
         >
           Relevant coursework

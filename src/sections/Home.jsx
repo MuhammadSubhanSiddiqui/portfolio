@@ -9,6 +9,7 @@ import TypewriterRoles from '../components/hero/TypewriterRoles'
 import MagneticButton from '../components/hero/MagneticButton'
 import ScrollIndicator from '../components/hero/ScrollIndicator'
 import resumePdf from '../images/muhammadsubhansiddiqui_resume.pdf'
+import { HERO_CONTAINER, HERO_ITEM } from '../lib/motion'
 
 const SOCIAL_LINKS = [
   { href: 'https://github.com/MuhammadSubhanSiddiqui', label: 'GitHub', icon: FaGithub },
@@ -21,22 +22,6 @@ const SOCIAL_LINKS = [
   { href: 'https://leetcode.com/u/msubhansiddiqui/', label: 'LeetCode', icon: SiLeetcode },
   { href: 'mailto:subhansiddiquiau@gmail.com', label: 'Email', icon: Mail },
 ]
-
-const containerVariants = {
-  hidden: {},
-  visible: {
-    transition: { staggerChildren: 0.14, delayChildren: 0.15 },
-  },
-}
-
-const itemVariants = {
-  hidden: { opacity: 0, y: 28 },
-  visible: {
-    opacity: 1,
-    y: 0,
-    transition: { duration: 0.65, ease: [0.22, 1, 0.36, 1] },
-  },
-}
 
 export default function Home() {
   const { theme } = useTheme()
@@ -57,13 +42,13 @@ export default function Home() {
 
       <div className="relative z-10 mx-auto w-full max-w-6xl px-4 sm:px-6 lg:px-8">
         <motion.div
-          variants={containerVariants}
+          variants={HERO_CONTAINER}
           initial="hidden"
           animate="visible"
           className="max-w-4xl"
         >
           <motion.p
-            variants={itemVariants}
+            variants={HERO_ITEM}
             className={`mb-6 max-w-xl text-sm font-medium leading-relaxed sm:text-base ${
               isDark ? 'text-text-secondary' : 'text-slate-500'
             }`}
@@ -71,7 +56,7 @@ export default function Home() {
             I don&apos;t just study AI — I build AI systems that solve real problems.
           </motion.p>
 
-          <motion.div variants={itemVariants}>
+          <motion.div variants={HERO_ITEM}>
             <h1
               className={`font-display text-5xl font-bold leading-[1.05] tracking-tight sm:text-6xl md:text-7xl lg:text-8xl ${
                 isDark ? 'text-text-primary' : 'text-slate-900'
@@ -82,12 +67,12 @@ export default function Home() {
             </h1>
           </motion.div>
 
-          <motion.div variants={itemVariants} className="mt-5 sm:mt-6">
+          <motion.div variants={HERO_ITEM} className="mt-5 sm:mt-6">
             <TypewriterRoles />
           </motion.div>
 
           <motion.p
-            variants={itemVariants}
+            variants={HERO_ITEM}
             className={`mt-6 max-w-2xl text-base leading-relaxed sm:text-lg ${
               isDark ? 'text-text-secondary' : 'text-slate-600'
             }`}
@@ -97,7 +82,7 @@ export default function Home() {
           </motion.p>
 
           <motion.div
-            variants={itemVariants}
+            variants={HERO_ITEM}
             className="mt-10 flex flex-wrap items-center gap-3 sm:gap-4"
           >
             <a
@@ -133,7 +118,7 @@ export default function Home() {
             </MagneticButton>
           </motion.div>
 
-          <motion.div variants={itemVariants} className="mt-10 flex items-center gap-5">
+          <motion.div variants={HERO_ITEM} className="mt-10 flex items-center gap-5">
             {SOCIAL_LINKS.map(({ href, label, icon: Icon }) => (
               <a
                 key={label}

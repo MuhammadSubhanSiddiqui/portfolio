@@ -5,6 +5,7 @@ import { PROJECT_CATEGORIES, getProjectsByCategory } from '../lib/projects'
 import ProjectFilter from '../components/projects/ProjectFilter'
 import ProjectCard from '../components/projects/ProjectCard'
 import ProjectModal from '../components/projects/ProjectModal'
+import { SECTION_REVEAL } from '../lib/motion'
 
 export default function Projects() {
   const { theme } = useTheme()
@@ -21,10 +22,10 @@ export default function Projects() {
     >
       <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
+          variants={SECTION_REVEAL}
+          initial="hidden"
+          whileInView="visible"
           viewport={{ once: true, margin: '-60px' }}
-          transition={{ duration: 0.55, ease: [0.22, 1, 0.36, 1] }}
         >
           <p
             className={`mb-2 text-sm font-medium uppercase tracking-[0.2em] ${

@@ -4,6 +4,7 @@ import { useTheme } from '../lib/ThemeContext'
 import AboutPhoto from '../components/about/AboutPhoto'
 import AboutStat from '../components/about/AboutStat'
 import FocusCard from '../components/about/FocusCard'
+import { SECTION_REVEAL, SECTION_X_REVEAL_LEFT, SECTION_X_REVEAL_RIGHT } from '../lib/motion'
 
 const STATS = [
   { value: 70, suffix: '+', label: 'LeetCode Problems' },
@@ -50,10 +51,10 @@ export default function About() {
     >
       <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
+          variants={SECTION_REVEAL}
+          initial="hidden"
+          whileInView="visible"
           viewport={{ once: true, margin: '-60px' }}
-          transition={{ duration: 0.55, ease: [0.22, 1, 0.36, 1] }}
         >
           <p
             className={`mb-2 text-sm font-medium uppercase tracking-[0.2em] ${
@@ -73,19 +74,19 @@ export default function About() {
 
         <div className="mt-14 grid items-start gap-12 lg:grid-cols-[minmax(0,340px)_1fr] lg:gap-16">
           <motion.div
-            initial={{ opacity: 0, x: -24 }}
-            whileInView={{ opacity: 1, x: 0 }}
+            variants={SECTION_X_REVEAL_LEFT}
+            initial="hidden"
+            whileInView="visible"
             viewport={{ once: true, margin: '-60px' }}
-            transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
           >
             <AboutPhoto />
           </motion.div>
 
           <motion.div
-            initial={{ opacity: 0, x: 24 }}
-            whileInView={{ opacity: 1, x: 0 }}
+            variants={SECTION_X_REVEAL_RIGHT}
+            initial="hidden"
+            whileInView="visible"
             viewport={{ once: true, margin: '-60px' }}
-            transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
           >
             <div
               className={`space-y-4 text-base leading-relaxed sm:text-[1.05rem] sm:leading-[1.75] ${

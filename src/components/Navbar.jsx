@@ -1,8 +1,11 @@
+import { AnimatePresence, motion } from 'framer-motion'
 import { useEffect, useState } from 'react'
 import { Menu, X } from 'lucide-react'
 import ThemeToggle from './ThemeToggle'
 import { useTheme } from '../lib/ThemeContext'
 import { NAV_LINKS } from '../lib/navigation'
+import ScrollProgress from './ScrollProgress'
+import { EASE_OUT } from '../lib/motion'
 
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false)
@@ -12,8 +15,19 @@ export default function Navbar() {
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 24)
     onScroll()
-    window.addEventListener('scroll', onScroll, { passive: true })
-    return () => window.removeEventListener('scroll', onScroll)
+    let frame = 0
+    const handleScroll = () => {
+      if (frame) return
+      frame = window.requestAnimationFrame(() => {
+        frame = 0
+        onScroll()
+      })
+    }
+    window.addEventListener('scroll', handleScroll, { passive: true })
+    return () => {
+      window.removeEventListener('scroll', handleScroll)
+      if (frame) window.cancelAnimationFrame(frame)
+    }
   }, [])
 
   const handleNavClick = () => setMobileOpen(false)
@@ -74,32 +88,39 @@ export default function Navbar() {
           </button>
         </div>
       </nav>
+      <ScrollProgress />
 
-      {mobileOpen && (
-        <div
-          className={`border-t md:hidden ${
-            isDark ? 'border-white/10 bg-background/95' : 'border-slate-200 bg-white/95'
-          } backdrop-blur-md`}
-        >
-          <ul className="flex flex-col px-4 py-3">
-            {NAV_LINKS.map((link) => (
-              <li key={link.href}>
-                <a
-                  href={link.href}
-                  onClick={handleNavClick}
-                  className={`block rounded-lg px-3 py-2.5 text-sm font-medium transition-colors ${
-                    isDark
-                      ? 'text-text-secondary hover:bg-white/5 hover:text-text-primary'
-                      : 'text-slate-600 hover:bg-slate-100 hover:text-slate-900'
-                  }`}
-                >
-                  {link.label}
-                </a>
-              </li>
-            ))}
-          </ul>
-        </div>
-      )}
+      <AnimatePresence>
+        {mobileOpen && (
+          <motion.div
+            className={`fixed left-0 right-0 top-[4.5rem] border-t md:hidden ${
+              isDark ? 'border-white/10 bg-background/95' : 'border-slate-200 bg-white/95'
+            } backdrop-blur-md`}
+            initial={{ opacity: 0, y: -12 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -12 }}
+            transition={{ duration: 0.22, ease: EASE_OUT }}
+          >
+            <ul className="flex max-h-[calc(100vh-4.5rem)] flex-col overflow-y-auto px-4 py-3 shadow-xl">
+              {NAV_LINKS.map((link) => (
+                <li key={link.href}>
+                  <a
+                    href={link.href}
+                    onClick={handleNavClick}
+                    className={`block rounded-lg px-3 py-2.5 text-sm font-medium transition-colors ${
+                      isDark
+                        ? 'text-text-secondary hover:bg-white/5 hover:text-text-primary'
+                        : 'text-slate-600 hover:bg-slate-100 hover:text-slate-900'
+                    }`}
+                  >
+                    {link.label}
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </header>
   )
 }

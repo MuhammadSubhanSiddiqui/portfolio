@@ -1,14 +1,26 @@
-import { useCallback, useState } from 'react'
+import { useCallback, useEffect, useRef, useState } from 'react'
 
 export function useHeroMouseGlow(isDark) {
   const [glow, setGlow] = useState({ x: 0, y: 0, active: false })
+  const frameRef = useRef(0)
+  const lastEventRef = useRef(null)
+
+  useEffect(() => () => window.cancelAnimationFrame(frameRef.current), [])
 
   const onMouseMove = useCallback((e) => {
-    const rect = e.currentTarget.getBoundingClientRect()
-    setGlow({
-      x: e.clientX - rect.left,
-      y: e.clientY - rect.top,
-      active: true,
+    lastEventRef.current = e
+    if (frameRef.current) return
+
+    frameRef.current = window.requestAnimationFrame(() => {
+      frameRef.current = 0
+      const currentEvent = lastEventRef.current
+      if (!currentEvent) return
+      const rect = currentEvent.currentTarget.getBoundingClientRect()
+      setGlow({
+        x: currentEvent.clientX - rect.left,
+        y: currentEvent.clientY - rect.top,
+        active: true,
+      })
     })
   }, [])
 

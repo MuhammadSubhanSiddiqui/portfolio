@@ -106,7 +106,7 @@ export default function ContactForm({ onSuccess, onError }) {
           ? 'border-red-500/50 bg-background'
           : 'border-red-300 bg-white'
         : isDark
-          ? 'border-white/10 bg-background text-text-primary placeholder:text-text-secondary/50'
+          ? 'border-white/10 bg-background text-text-primary placeholder:text-text-secondary'
           : 'border-slate-200 bg-white text-slate-900 placeholder:text-slate-400'
     }`
 

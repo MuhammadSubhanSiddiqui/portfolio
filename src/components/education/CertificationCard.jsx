@@ -28,7 +28,7 @@ function CertificationImage({ cert, isDark }) {
   return (
     <div
       className={`flex h-full w-full flex-col items-center justify-center bg-gradient-to-br ${getProviderGradient(cert.provider)} ${
-        isDark ? 'text-text-secondary/50' : 'text-slate-400'
+            isDark ? 'text-text-secondary' : 'text-slate-400'
       }`}
     >
       <Award size={28} strokeWidth={1.25} />
@@ -62,7 +62,7 @@ export default function CertificationCard({ cert, index }) {
       <div className="p-4">
         <p
           className={`text-[11px] font-medium uppercase tracking-wide ${
-            isDark ? 'text-text-secondary/70' : 'text-slate-400'
+            isDark ? 'text-text-secondary' : 'text-slate-400'
           }`}
         >
           {cert.date}
@@ -84,7 +84,7 @@ export default function CertificationCard({ cert, index }) {
         {cert.topics && (
           <p
             className={`mt-2 text-[11px] leading-relaxed ${
-              isDark ? 'text-text-secondary/80' : 'text-slate-400'
+              isDark ? 'text-text-secondary' : 'text-slate-400'
             }`}
           >
             {cert.topics}

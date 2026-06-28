@@ -225,11 +225,11 @@ export function ProjectImage({ project, isDark }) {
         <ImageIcon
           size={40}
           strokeWidth={1.25}
-          className={`mx-auto mb-2 ${isDark ? 'text-text-secondary/40' : 'text-slate-300'}`}
+          className={`mx-auto mb-2 ${isDark ? 'text-text-secondary' : 'text-slate-300'}`}
         />
         <p
           className={`text-xs font-medium uppercase tracking-widest ${
-            isDark ? 'text-text-secondary/50' : 'text-slate-400'
+            isDark ? 'text-text-secondary' : 'text-slate-400'
           }`}
         >
           Screenshot

@@ -3,6 +3,7 @@ import { useTheme } from '../lib/ThemeContext'
 import { education, certifications } from '../lib/education'
 import EducationCard from '../components/education/EducationCard'
 import CertificationCard from '../components/education/CertificationCard'
+import { SECTION_REVEAL } from '../lib/motion'
 
 export default function Education() {
   const { theme } = useTheme()
@@ -15,10 +16,10 @@ export default function Education() {
     >
       <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
         <motion.div
-          initial={{ opacity: 0, y: 16 }}
-          whileInView={{ opacity: 1, y: 0 }}
+          variants={SECTION_REVEAL}
+          initial="hidden"
+          whileInView="visible"
           viewport={{ once: true, margin: '-60px' }}
-          transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
         >
           <p
             className={`mb-2 text-sm font-medium uppercase tracking-[0.2em] ${
@@ -43,7 +44,7 @@ export default function Education() {
         <div className="mt-14">
           <h3
             className={`mb-5 text-sm font-medium uppercase tracking-wider ${
-              isDark ? 'text-text-secondary/80' : 'text-slate-400'
+              isDark ? 'text-text-secondary' : 'text-slate-400'
             }`}
           >
             Certifications

@@ -5,6 +5,7 @@ import { SOCIAL_LINKS } from '../lib/contact'
 import ContactDetails from '../components/contact/ContactDetails'
 import ContactForm from '../components/contact/ContactForm'
 import Toast from '../components/contact/Toast'
+import { SECTION_REVEAL, SECTION_X_REVEAL_LEFT, SECTION_X_REVEAL_RIGHT } from '../lib/motion'
 
 export default function Contact() {
   const { theme } = useTheme()
@@ -23,10 +24,10 @@ export default function Contact() {
     >
       <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
+          variants={SECTION_REVEAL}
+          initial="hidden"
+          whileInView="visible"
           viewport={{ once: true, margin: '-60px' }}
-          transition={{ duration: 0.55, ease: [0.22, 1, 0.36, 1] }}
           className="max-w-2xl"
         >
           <p
@@ -54,17 +55,17 @@ export default function Contact() {
 
         <div className="mt-14 grid gap-12 lg:grid-cols-2 lg:gap-16">
           <motion.div
-            initial={{ opacity: 0, x: -20 }}
-            whileInView={{ opacity: 1, x: 0 }}
+            variants={SECTION_X_REVEAL_LEFT}
+            initial="hidden"
+            whileInView="visible"
             viewport={{ once: true, margin: '-60px' }}
-            transition={{ duration: 0.55, ease: [0.22, 1, 0.36, 1] }}
           >
             <ContactDetails />
 
             <div className="mt-10">
               <p
                 className={`mb-4 text-xs font-medium uppercase tracking-wider ${
-                  isDark ? 'text-text-secondary/70' : 'text-slate-400'
+                  isDark ? 'text-text-secondary' : 'text-slate-400'
                 }`}
               >
                 Connect
@@ -91,10 +92,10 @@ export default function Contact() {
           </motion.div>
 
           <motion.div
-            initial={{ opacity: 0, x: 20 }}
-            whileInView={{ opacity: 1, x: 0 }}
+            variants={SECTION_X_REVEAL_RIGHT}
+            initial="hidden"
+            whileInView="visible"
             viewport={{ once: true, margin: '-60px' }}
-            transition={{ duration: 0.55, ease: [0.22, 1, 0.36, 1] }}
             className={`relative rounded-xl p-6 sm:p-7 ${
               isDark ? 'glass' : 'glass-light'
             }`}

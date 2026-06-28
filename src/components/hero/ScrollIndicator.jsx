@@ -14,7 +14,7 @@ export default function ScrollIndicator() {
       } transition-colors`}
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
-      transition={{ delay: 1.4, duration: 0.6 }}
+      transition={{ delay: 1.15, duration: 0.55, ease: [0.22, 1, 0.36, 1] }}
       aria-label="Scroll to about section"
     >
       <span className="text-[10px] font-medium uppercase tracking-[0.2em]">Scroll</span>

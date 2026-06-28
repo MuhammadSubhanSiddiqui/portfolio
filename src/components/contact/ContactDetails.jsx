@@ -45,7 +45,7 @@ function DetailRow({ icon: Icon, label, children, isDark }) {
       <div className="min-w-0 flex-1">
         <p
           className={`text-xs font-medium uppercase tracking-wider ${
-            isDark ? 'text-text-secondary/70' : 'text-slate-400'
+            isDark ? 'text-text-secondary' : 'text-slate-400'
           }`}
         >
           {label}
