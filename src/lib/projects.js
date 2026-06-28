@@ -150,6 +150,7 @@ export const projects = [
     tags: ['Next.js', 'TypeScript', 'Tailwind CSS', 'REST API'],
     links: {
       github: 'https://github.com/MuhammadSubhanSiddiqui/task-manager',
+      demo: 'https://task-manager-au.netlify.app/',
     },
     caseStudy: {
       problem:
