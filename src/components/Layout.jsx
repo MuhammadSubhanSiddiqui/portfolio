@@ -22,9 +22,9 @@ export default function Layout() {
         <Home />
         <Suspense fallback={<SectionFallback />}>
           <About />
-          <Experience />
-          <Projects />
           <Skills />
+          <Projects />
+          <Experience />
           <Education />
           <Contact />
         </Suspense>
