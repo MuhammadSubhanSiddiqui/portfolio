@@ -59,7 +59,7 @@ export const projects = [
     links: {
       github: 'https://github.com/MuhammadSubhanSiddiqui/ai_financial_scam-detection',
       dataset: 'https://www.kaggle.com/datasets/msubhansiddiqui/financial-scam-and-deceptive-text-meta-dataset', 
-      demo: 'https://huggingface.co/spaces/msubhansiddiqui/financial-scam-detection',
+      demo: 'https://huggingface.co/spaces/msubhansiddiqui/Financial-Scam-Detector',
     },
     caseStudy: {
       problem:
