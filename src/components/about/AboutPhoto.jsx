@@ -1,5 +1,5 @@
-import { User } from 'lucide-react'
 import { useTheme } from '../../lib/ThemeContext'
+import profileImg from '../../images/myimage.jpg'
 
 export default function AboutPhoto() {
   const { theme } = useTheme()
@@ -27,25 +27,12 @@ export default function AboutPhoto() {
             isDark ? 'border-white/10 bg-surface' : 'border-slate-200 bg-white'
           }`}
         >
-          <div
-            className={`flex aspect-[4/5] items-center justify-center rounded-lg ${
-              isDark ? 'bg-background/60' : 'bg-slate-100'
-            }`}
-          >
-            <div className="text-center">
-              <User
-                size={48}
-                strokeWidth={1.25}
-                className={`mx-auto mb-3 ${isDark ? 'text-text-secondary/50' : 'text-slate-300'}`}
-              />
-              <p
-                className={`text-xs font-medium uppercase tracking-widest ${
-                  isDark ? 'text-text-secondary/60' : 'text-slate-400'
-                }`}
-              >
-                Photo
-              </p>
-            </div>
+          <div className="rounded-lg">
+            <img
+              src={profileImg}
+              alt="Muhammad Subhan Siddiqui — profile photo"
+              className="block h-auto w-full rounded-lg"
+            />
           </div>
         </div>
       </div>

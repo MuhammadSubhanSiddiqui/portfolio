@@ -8,7 +8,7 @@ import FocusCard from '../components/about/FocusCard'
 const STATS = [
   { value: 70, suffix: '+', label: 'LeetCode Problems' },
   { value: 98.5, decimals: 1, suffix: '%', label: 'Model Accuracy Achieved' },
-  { value: 13, suffix: '+', label: 'Projects Shipped' },
+  { value: 12, suffix: '+', label: 'Projects Shipped' },
 ]
 
 const FOCUS_AREAS = [

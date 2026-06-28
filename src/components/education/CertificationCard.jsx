@@ -18,9 +18,7 @@ function CertificationImage({ cert, isDark }) {
       <img
         src={cert.image}
         alt={`${cert.name} certification badge from ${cert.provider} — Muhammad Subhan Siddiqui`}
-        width={280}
-        height={175}
-        className="h-full w-full object-cover"
+        className="block h-auto w-full"
         loading="lazy"
         decoding="async"
       />
@@ -57,7 +55,7 @@ export default function CertificationCard({ cert, index }) {
           : 'border-slate-200/80 bg-white shadow-sm hover:border-slate-300 hover:shadow-md'
       }`}
     >
-      <div className="aspect-[16/10] overflow-hidden">
+      <div>
         <CertificationImage cert={cert} isDark={isDark} />
       </div>
 

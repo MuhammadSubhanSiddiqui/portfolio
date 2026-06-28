@@ -1,3 +1,12 @@
+import introToMlImg from '../images/certifications/intro-to-machine-learning.png'
+import pythonImg from '../images/certifications/python.png'
+import computerNetworkingImg from '../images/certifications/computer-networking.jpeg'
+import aiForEveryoneImg from '../images/certifications/ai-for-everyone.jpeg'
+import dataEverywhereImg from '../images/certifications/data-data-everywhere.jpeg'
+import technicalSupportImg from '../images/certifications/technical-support.jpeg'
+import googleSoftSkillsImg from '../images/certifications/google-soft-skills-program.jpg'
+import programmingFundamentalsImg from '../images/certifications/programming-fundamentals.jpeg'
+
 export const education = {
   degree: 'BS Computer Science',
   institution: 'Air University Islamabad',
@@ -18,8 +27,8 @@ export const education = {
 }
 
 /**
- * Certifications — set `image` to a path under /public (e.g. "/images/certifications/python.png").
- * Leave null to show a provider placeholder until you add the badge screenshot.
+ * Certifications — add badge screenshots in `src/images/certifications/`,
+ * import them above, and set `image` on each entry.
  *
  * Sorted most-recent first. `verifyUrl` is optional — wire it up to a "Verify" button/link
  * on the certification card if you want clickable verification.
@@ -30,7 +39,7 @@ export const certifications = [
     name: 'Intro to Machine Learning',
     provider: 'Kaggle',
     date: 'May 2026',
-    image: null,
+    image: introToMlImg,
     topics: 'Supervised Learning, Decision Trees, Regression, Scikit-Learn',
     verifyUrl: null,
   },
@@ -39,7 +48,7 @@ export const certifications = [
     name: 'Python',
     provider: 'Kaggle',
     date: 'April 2026',
-    image: null,
+    image: pythonImg,
     topics: 'Data Structures, Control Flow, Lambdas, Scripting Core',
     verifyUrl: null,
   },
@@ -48,7 +57,7 @@ export const certifications = [
     name: 'The Bits and Bytes of Computer Networking',
     provider: 'Google / Coursera',
     date: 'May 2025',
-    image: null,
+    image: computerNetworkingImg,
     topics: 'TCP/IP, DNS, Routing, Network Security',
     verifyUrl: 'https://coursera.org/verify/HFUO8GZTKE4O',
   },
@@ -57,7 +66,7 @@ export const certifications = [
     name: 'AI for Everyone',
     provider: 'DeepLearning.AI / Coursera',
     date: 'April 2025',
-    image: null,
+    image: aiForEveryoneImg,
     topics: 'AI Strategy, Neural Networks, Machine Learning Project Workflows',
     verifyUrl: 'https://coursera.org/verify/AVB9929XIQJI',
   },
@@ -66,7 +75,7 @@ export const certifications = [
     name: 'Foundations: Data, Data, Everywhere',
     provider: 'Google / Coursera',
     date: 'March 2025',
-    image: null,
+    image: dataEverywhereImg,
     topics: 'Data Analysis Foundations, Data Ecosystem, Ecosystem Lifecycle',
     verifyUrl: 'https://coursera.org/verify/EMPT47F13V2A',
   },
@@ -75,7 +84,7 @@ export const certifications = [
     name: 'Technical Support Fundamentals',
     provider: 'Google / Coursera',
     date: 'March 2025',
-    image: null,
+    image: technicalSupportImg,
     topics: 'IT Support Basics, Troubleshooting, Customer Service, Systems Infrastructure',
     verifyUrl: 'https://coursera.org/verify/4A2MOQUW8E7O',
   },
@@ -84,7 +93,7 @@ export const certifications = [
     name: 'Google Soft Skills Program',
     provider: 'Google / PAFLA',
     date: 'December 2024',
-    image: null,
+    image: googleSoftSkillsImg,
     topics: 'Communication, Professionalism, Workplace Soft Skills',
     verifyUrl: null,
   },
@@ -93,7 +102,7 @@ export const certifications = [
     name: 'Programming Fundamentals',
     provider: 'Duke University / Coursera',
     date: 'November 2023',
-    image: null,
+    image: programmingFundamentalsImg,
     topics: 'Core Programming Concepts, Problem Solving, Algorithm Design',
     verifyUrl: 'https://coursera.org/verify/GYGFL52BZMMF',
   },

@@ -8,6 +8,7 @@ import { useHeroMouseGlow } from '../components/hero/useHeroMouseGlow'
 import TypewriterRoles from '../components/hero/TypewriterRoles'
 import MagneticButton from '../components/hero/MagneticButton'
 import ScrollIndicator from '../components/hero/ScrollIndicator'
+import resumePdf from '../images/muhammadsubhansiddiqui_resume.pdf'
 
 const SOCIAL_LINKS = [
   { href: 'https://github.com/MuhammadSubhanSiddiqui', label: 'GitHub', icon: FaGithub },
@@ -111,9 +112,10 @@ export default function Home() {
             </a>
 
             <a
-              href="/resume.pdf"
+              href={resumePdf}
               target="_blank"
               rel="noopener noreferrer"
+              download="Muhammad_Subhan_Siddiqui_Resume.pdf"
               className={`inline-flex items-center justify-center rounded-full px-6 py-2.5 text-sm font-semibold transition-all ${
                 isDark
                   ? 'border border-white/10 text-text-secondary hover:border-white/20 hover:text-text-primary'
